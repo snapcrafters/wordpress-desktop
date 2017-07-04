@@ -1,0 +1,50 @@
+name: wordpress-desktop
+version: 2.5.0
+summary: WordPress.com Desktop client
+description: |
+ A desktop app that gives WordPress a permanent home in your dock.
+ .
+ Write and design with no other browser tabs to distract you. Switch
+ easily between managing your WordPress sites and your favorite desktop
+ apps.
+ .
+ The WordPress.com desktop app will scale to any size. Do you need a
+ small window on the side to keep your eye on notifications, or do want
+ to expand to a truly full screen for a zen writing experience? Take
+ your pick.
+
+grade: stable
+confinement: strict
+
+parts:
+  wordpress-desktop:
+    plugin: dump
+    source: https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=deb
+    source-type: deb
+    after:
+      - desktop-gtk2
+    stage-packages:
+      - gconf2
+      - libasound2
+      - libnotify4
+      - libnspr4
+      - libnss3
+      - libpulse0
+      - libxss1
+      - libxtst6
+
+apps:
+  wordpress-desktop:
+    # Correct the TMPDIR path for Chromium Framework/Electron to
+    # ensure libappindicator has readable resources.
+    command: env TMPDIR=$XDG_RUNTIME_DIR PATH=/usr/local/bin:${PATH} ${SNAP}/bin/desktop-launch $SNAP/usr/share/wpcom/wpcom
+    desktop: usr/share/applications/wpcom.desktop
+    plugs:
+      - browser-support
+      - gsettings
+      - home
+      - mount-observe
+      - network
+      - pulseaudio
+      - unity7
+      - x11
