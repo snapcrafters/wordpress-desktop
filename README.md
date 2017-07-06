@@ -6,11 +6,9 @@
 
 <p align="center"><b>This is the snap for Wordpress Desktop</b>, <i>"the WordPress.com Desktop client"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.</p>
 
-<!--
 <p align="center">
 <a href="https://build.snapcraft.io/user/snapcrafters/discord"><img src="https://build.snapcraft.io/badge/snapcrafters/discord.svg" alt="Snap Status"></a>
 </p>
--->
 
 ## Install
 
