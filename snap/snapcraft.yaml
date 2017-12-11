@@ -1,5 +1,5 @@
 name: wordpress-desktop
-version: 2.9.0
+version: 3.1.0
 summary: WordPress.com Desktop client
 description: |
  A desktop app that gives WordPress a permanent home in your dock.
@@ -47,4 +47,6 @@ apps:
       - network
       - pulseaudio
       - unity7
-      - x11
+      - desktop
+      - desktop-legacy
+      - wayland
