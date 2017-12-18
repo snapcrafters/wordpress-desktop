@@ -35,16 +35,19 @@ parts:
 
 apps:
   wordpress-desktop:
-    # Correct the TMPDIR path for Chromium Framework/Electron to
-    # ensure libappindicator has readable resources.
-    command: env TMPDIR=$XDG_RUNTIME_DIR PATH=/usr/local/bin:${PATH} ${SNAP}/bin/desktop-launch $SNAP/usr/share/wpcom/wpcom
+    command: bin/desktop-launch $SNAP/usr/share/wpcom/wpcom
     desktop: usr/share/applications/wpcom.desktop
+    # Correct the TMPDIR path for Chromium Framework/Electron to ensure
+    # libappindicator has readable resources.
+    environment:
+      TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - browser-support
       - gsettings
       - home
       - mount-observe
       - network
+      - opengl
       - pulseaudio
       - unity7
       - wayland
