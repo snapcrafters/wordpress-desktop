@@ -42,6 +42,7 @@ apps:
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
     plugs:
+      - bluez
       - browser-support
       - gsettings
       - home
