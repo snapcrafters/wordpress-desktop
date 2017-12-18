@@ -41,8 +41,6 @@ apps:
     desktop: usr/share/applications/wpcom.desktop
     plugs:
       - browser-support
-      - desktop
-      - desktop-legacy
       - gsettings
       - home
       - mount-observe
