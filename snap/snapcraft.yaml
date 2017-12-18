@@ -24,8 +24,8 @@ parts:
     after:
       - desktop-gtk2
     stage-packages:
-      - gconf2
       - libasound2
+      - libgconf-2-4
       - libnotify4
       - libnspr4
       - libnss3
@@ -41,12 +41,13 @@ apps:
     desktop: usr/share/applications/wpcom.desktop
     plugs:
       - browser-support
+      - desktop
+      - desktop-legacy
       - gsettings
       - home
       - mount-observe
       - network
       - pulseaudio
       - unity7
-      - desktop
-      - desktop-legacy
       - wayland
+      - x11
