@@ -21,8 +21,14 @@ parts:
     plugin: dump
     source: https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=deb
     source-type: deb
+    # Clear the execstack
+    # https://forum.snapcraft.io/t/snap-and-executable-stacks/1812
+    prepare: |
+        execstack --clear-execstack usr/share/wpcom/wpcom
     after:
       - desktop-gtk2
+    build-packages:
+      - execstack
     stage-packages:
       - libasound2
       - libgconf-2-4
