@@ -50,6 +50,7 @@ apps:
     plugs:
       - bluez
       - browser-support
+      - desktop
       - gsettings
       - home
       - mount-observe
