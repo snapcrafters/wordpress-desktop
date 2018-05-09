@@ -7,13 +7,12 @@
 <p align="center"><b>This is the snap for Wordpress Desktop</b>, <i>"the WordPress.com Desktop client"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.</p>
 
 <p align="center">
-<a href="https://build.snapcraft.io/user/snapcrafters/discord"><img src="https://build.snapcraft.io/badge/snapcrafters/discord.svg" alt="Snap Status"></a>
+<a href="https://build.snapcraft.io/user/snapcrafters/wordpress-desktop"><img src="https://build.snapcraft.io/badge/snapcrafters/wordpress-desktop.svg" alt="Snap Status"></a>
 </p>
 
 ## Install
 
-    sudo apt install snapd-xdg-open
-    sudo snap install wordpress-desktop
+    snap install wordpress-desktop
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
@@ -39,13 +38,13 @@ Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) ar
   - [x] Update the install instructions in this `README.md`
   - [x] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link](http://www.omgubuntu.co.uk/2017/05/wordpress-desktop-app-snap)
   - [x] Request your GitHub repository is forked to the Snapcrafters organisation and configured for automated builds
-  - [ ] Add the provided Snapcraft build badge to this `README.md`
+  - [x] Add the provided Snapcraft build badge to this `README.md`
   - [x] Publish the snap in the Snap store stable channel
   - [x] Update the install instructions in this `README.md`
   - [x] Post an announcement in the [Snapcraft Forum](https://forum.snapcraft.io) - [link](http://www.omgubuntu.co.uk/2017/05/wordpress-desktop-app-snap)
-  - [ ] Submit a pull request or patch upstream that adds snap install documentation - [link]()
-  - [ ] Submit a pull request or patch upstream that adds the `snapcraft.yaml` and any required assets/launchers - [link]()
-  - [ ] Add upstream contact information to the `README.md`  
+  - [-] Submit a pull request or patch upstream that adds snap install documentation
+  - [-] Submit a pull request or patch upstream that adds the `snapcraft.yaml` and any required assets/launchers
+  - [ ] Add upstream contact information to the `README.md`
   - If upstream accept the PR:
     - [ ] Request upstream create a Snap store account
     - [ ] Contact the Snap Advocacy team to request the snap be transferred to upstream
