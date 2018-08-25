@@ -49,7 +49,7 @@ parts:
 
 apps:
   wordpress-desktop:
-    command: bin/desktop-launch $SNAP/usr/share/wpcom/wpcom
+    command: bin/desktop-launch $SNAP/opt/WordPress.com/wpcom
     desktop: usr/share/applications/wpcom.desktop
     # Correct the TMPDIR path for Chromium Framework/Electron to ensure
     # libappindicator has readable resources.
