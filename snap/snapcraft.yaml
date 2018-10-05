@@ -17,6 +17,9 @@ description: |
 grade: stable
 confinement: strict
 
+architectures:
+  - build-on: amd64
+
 parts:
   wordpress-desktop:
     plugin: dump
@@ -32,11 +35,7 @@ parts:
     after:
       - desktop-gtk2
     build-packages:
-      # Wordpress Desktop  debs are only available for amd64.
-      # Fail builds on other architectures
-      - on amd64:
-        - curl
-      - else fail
+      - curl
     stage-packages:
       - libasound2
       - libgconf-2-4
