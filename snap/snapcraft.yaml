@@ -28,7 +28,7 @@ parts:
     override-build: |
       DEB_API="https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?type=deb"
       echo $DEB_API
-      VERSION=$(curl -IXGET -s  $DEB_API | grep Content-Disposition | awk -F '.' '{print $1}' | awk -F '-' '{print $6,$7,$8}' | tr ' ' '.')
+      VERSION=$(curl -IXGET -s  $DEB_API | grep -i Content-Disposition | awk -F '"' '{print $2}' | awk -F '-' '{print $4}' | awk -F '.' '{print $1,$2,$3}' | tr ' ' '.')
       echo "Version: $VERSION"
       echo $VERSION > $SNAPCRAFT_STAGE/version
       snapcraftctl build
