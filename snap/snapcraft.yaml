@@ -13,7 +13,7 @@ description: |
  small window on the side to keep your eye on notifications, or do want
  to expand to a truly full screen for a zen writing experience? Take
  your pick.
-
+base: core18
 grade: stable
 confinement: strict
 
@@ -48,7 +48,34 @@ parts:
       - libpulse0
       - libxss1
       - libxtst6
-
+  desktop-gtk2:
+    build-packages:
+    - build-essential
+    - libgtk2.0-dev
+    make-parameters:
+    - FLAVOR=gtk2
+    plugin: make
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    stage-packages:
+    - libxkbcommon0
+    - ttf-ubuntu-font-family
+    - dmz-cursor-theme
+    - light-themes
+    - adwaita-icon-theme
+    - gnome-themes-standard
+    - shared-mime-info
+    - libgtk2.0-0
+    - libgdk-pixbuf2.0-0
+    - libglib2.0-bin
+    - libgtk2.0-bin
+    - unity-gtk2-module
+    - locales-all
+    - libappindicator1
+    - xdg-user-dirs
+    - ibus-gtk
+    - libibus-1.0-5
+    
 apps:
   wordpress-desktop:
     command: bin/desktop-launch $SNAP/opt/WordPress.com/wpcom
