@@ -1,6 +1,5 @@
 name: wordpress-desktop
-version: latest
-version-script: cat $SNAPCRAFT_STAGE/version
+adopt-info: wordpress-desktop
 summary: WordPress.com Desktop client
 description: |
  A desktop app that gives WordPress a permanent home in your dock.
@@ -13,12 +12,19 @@ description: |
  small window on the side to keep your eye on notifications, or do want
  to expand to a truly full screen for a zen writing experience? Take
  your pick.
+base: core18
 
 grade: stable
 confinement: strict
 
 architectures:
   - build-on: amd64
+
+plugs:
+  gnome-3-28-1804:
+    interface: content
+    target: $SNAP/gnome-platform
+    default-provider: gnome-3-28-1804
 
 parts:
   wordpress-desktop:
@@ -30,10 +36,8 @@ parts:
       echo $DEB_API
       VERSION=$(curl -IXGET -s  $DEB_API | grep -i Content-Disposition | awk -F '"' '{print $2}' | awk -F '-' '{print $4}' | awk -F '.' '{print $1,$2,$3}' | tr ' ' '.')
       echo "Version: $VERSION"
-      echo $VERSION > $SNAPCRAFT_STAGE/version
+      snapcraftctl set-version "$VERSION"
       snapcraftctl build
-    after:
-      - desktop-gtk2
     build-packages:
       - curl
     stage-packages:
@@ -45,10 +49,19 @@ parts:
       - libpulse0
       - libxss1
       - libxtst6
+  cleanup:
+    after: [ wordpress-desktop ]
+    plugin: nil
+    build-snaps: [ gnome-3-28-1804 ]
+    override-prime: |
+        set -eux
+        cd /snap/gnome-3-28-1804/current
+        find . -type f,l -exec rm -f $SNAPCRAFT_PRIME/{} \;
 
 apps:
   wordpress-desktop:
-    command: bin/desktop-launch $SNAP/opt/WordPress.com/wpcom
+    extensions: [gnome-3-28]
+    command: opt/WordPress.com/wpcom
     desktop: usr/share/applications/wpcom.desktop
     # Correct the TMPDIR path for Chromium Framework/Electron to ensure
     # libappindicator has readable resources.
