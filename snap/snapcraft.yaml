@@ -20,12 +20,6 @@ confinement: strict
 architectures:
   - build-on: amd64
 
-plugs:
-  gnome-3-28-1804:
-    interface: content
-    target: $SNAP/gnome-platform
-    default-provider: gnome-3-28-1804
-
 parts:
   wordpress-desktop:
     plugin: dump
@@ -38,17 +32,14 @@ parts:
       echo "Version: $VERSION"
       snapcraftctl set-version "$VERSION"
       snapcraftctl build
+      sed -i 's|Icon=wpcom|Icon=/usr/share/icons/hicolor/256x256/apps/wpcom\.png|' ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/wpcom.desktop
     build-packages:
       - curl
     stage-packages:
-      - libasound2
-      - libgconf-2-4
-      - libnotify4
       - libnspr4
       - libnss3
-      - libpulse0
+      - libxkbfile1
       - libxss1
-      - libxtst6
   cleanup:
     after: [ wordpress-desktop ]
     plugin: nil
@@ -63,20 +54,12 @@ apps:
     extensions: [gnome-3-28]
     command: opt/WordPress.com/wpcom
     desktop: usr/share/applications/wpcom.desktop
-    # Correct the TMPDIR path for Chromium Framework/Electron to ensure
-    # libappindicator has readable resources.
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - browser-support
-      - desktop
-      - desktop-legacy
-      - gsettings
       - home
-      - mount-observe
       - network
       - opengl
       - pulseaudio
       - unity7
-      - wayland
-      - x11
