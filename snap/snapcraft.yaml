@@ -32,6 +32,7 @@ parts:
       echo "Version: $VERSION"
       snapcraftctl set-version "$VERSION"
       snapcraftctl build
+      sed -i 's|Icon=wpcom|Icon=/usr/share/icons/hicolor/256x256/apps/wpcom\.png|' ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/wpcom.desktop
     build-packages:
       - curl
     stage-packages:
