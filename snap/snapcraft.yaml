@@ -54,20 +54,12 @@ apps:
     extensions: [gnome-3-28]
     command: opt/WordPress.com/wpcom
     desktop: usr/share/applications/wpcom.desktop
-    # Correct the TMPDIR path for Chromium Framework/Electron to ensure
-    # libappindicator has readable resources.
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
     plugs:
       - browser-support
-      - desktop
-      - desktop-legacy
-      - gsettings
       - home
-      - mount-observe
       - network
       - opengl
       - pulseaudio
       - unity7
-      - wayland
-      - x11
