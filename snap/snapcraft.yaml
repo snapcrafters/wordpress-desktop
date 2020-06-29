@@ -38,6 +38,8 @@ parts:
       echo "Version: $VERSION"
       snapcraftctl set-version "$VERSION"
       snapcraftctl build
+    prime: 
+      - -opt/WordPress.com/chrome-sandbox
     build-packages:
       - curl
     stage-packages:
@@ -61,7 +63,7 @@ parts:
 apps:
   wordpress-desktop:
     extensions: [gnome-3-28]
-    command: opt/WordPress.com/wpcom
+    command: opt/WordPress.com/wpcom --no-sandbox
     desktop: usr/share/applications/wpcom.desktop
     # Correct the TMPDIR path for Chromium Framework/Electron to ensure
     # libappindicator has readable resources.
